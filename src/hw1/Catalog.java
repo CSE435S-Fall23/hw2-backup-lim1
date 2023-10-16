@@ -5,7 +5,12 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
-
+import java.util.Map.Entry;
+/*
+ * Chae Hun Lim (441471)
+ * Student 2 name:
+ * Date: Sep 22 2023
+ */
 /**
  * The Catalog keeps track of all available tables in the database and their
  * associated schemas.
@@ -20,8 +25,30 @@ public class Catalog {
      * Constructor.
      * Creates a new, empty catalog.
      */
+	private Map<Integer, Table> catalogMap;
+
+
+	
+	private class Table {
+		private HeapFile file;
+		private String name;
+		private String pkeyField;
+		
+		public Table(HeapFile file, String name, String pkeyField) {
+			
+			this.file = file;
+			this.name = name;
+			this.pkeyField = pkeyField;
+		}
+		
+		
+	}
+	
     public Catalog() {
     	//your code here
+    	this.catalogMap = new HashMap<>();
+
+
     }
 
     /**
@@ -33,7 +60,16 @@ public class Catalog {
      * @param pkeyField the name of the primary key field
      */
     public void addTable(HeapFile file, String name, String pkeyField) {
+    	if (name == null) {
+    		throw new IllegalArgumentException("name cannot be null.");
+    	}
     	//your code here
+    	int id = file.getId();
+    	
+    	Table tb = new Table(file,name,pkeyField);
+    	
+    	this.catalogMap.put(id, tb);
+    
     }
 
     public void addTable(HeapFile file, String name) {
@@ -46,7 +82,14 @@ public class Catalog {
      */
     public int getTableId(String name) {
     	//your code here
-    	return 0;
+    	for (Entry<Integer, Table> entry : this.catalogMap.entrySet()) {
+    		if(Objects.equals(name, entry.getValue().name)) {
+    			return entry.getKey();
+    		}
+    		
+    	}
+    	throw new NoSuchElementException();
+    
     }
 
     /**
@@ -56,7 +99,8 @@ public class Catalog {
      */
     public TupleDesc getTupleDesc(int tableid) throws NoSuchElementException {
     	//your code here
-    	return null;
+    	return this.catalogMap.get(tableid).file.getTupleDesc();
+
     }
 
     /**
@@ -67,27 +111,32 @@ public class Catalog {
      */
     public HeapFile getDbFile(int tableid) throws NoSuchElementException {
     	//your code here
-    	return null;
+    	return this.catalogMap.get(tableid).file;
+
     }
 
     /** Delete all tables from the catalog */
     public void clear() {
     	//your code here
+    	this.catalogMap.clear();
+    	
     }
 
     public String getPrimaryKey(int tableid) {
     	//your code here
-    	return null;
+    	return this.catalogMap.get(tableid).pkeyField;
+
     }
 
     public Iterator<Integer> tableIdIterator() {
     	//your code here
-    	return null;
+    	return this.catalogMap.keySet().iterator();
+
     }
 
     public String getTableName(int id) {
     	//your code here
-    	return null;
+    	return this.catalogMap.get(id).name;
     }
     
     /**

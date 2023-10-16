@@ -1,6 +1,10 @@
 package hw1;
 import java.util.*;
-
+/*
+ * Chae Hun Lim (441471)
+ * Student 2 name:
+ * Date: Sep 22 2023
+ */
 /**
  * TupleDesc describes the schema of a tuple.
  */
@@ -19,6 +23,8 @@ public class TupleDesc {
      */
     public TupleDesc(Type[] typeAr, String[] fieldAr) {
     	//your code here
+    	this.types = typeAr;
+    	this.fields = fieldAr;
     }
 
     /**
@@ -26,7 +32,7 @@ public class TupleDesc {
      */
     public int numFields() {
         //your code here
-    	return 0;
+    	return this.fields.length;
     }
 
     /**
@@ -38,7 +44,10 @@ public class TupleDesc {
      */
     public String getFieldName(int i) throws NoSuchElementException {
         //your code here
-    	return null;
+    	if (i > numFields() || i < 0) {
+    		throw new NoSuchElementException();
+    	}
+    	return this.fields[i];
     }
 
     /**
@@ -50,7 +59,12 @@ public class TupleDesc {
      */
     public int nameToId(String name) throws NoSuchElementException {
         //your code here
-    	return 0;
+    	for (int i = 0; i < this.fields.length; ++i) {
+    		if (this.fields[i].contentEquals(name)) {
+    			return i;
+    		}
+    	}
+    	throw new NoSuchElementException();
     }
 
     /**
@@ -62,7 +76,12 @@ public class TupleDesc {
      */
     public Type getType(int i) throws NoSuchElementException {
         //your code here
-    	return null;
+    	if (i > this.types.length || i < 0) {
+    		throw new NoSuchElementException();
+    		
+    	}
+    	return this.types[i];
+
     }
 
     /**
@@ -71,7 +90,13 @@ public class TupleDesc {
      */
     public int getSize() {
     	//your code here
-    	return 0;
+    	int size = 0;
+    	for (Type type : this.types) {
+    	
+    		size += type.equals(Type.INT) ? 4 : 129;
+    	}
+    	return size;
+
     }
 
     /**
@@ -84,6 +109,21 @@ public class TupleDesc {
      */
     public boolean equals(Object o) {
     	//your code here
+    	if(o instanceof TupleDesc){
+    		TupleDesc t = (TupleDesc)o;
+    		if (this.getSize() != t.getSize()) {
+    			return false;
+    		}
+    		for (int i = 0; i < this.types.length; ++i) {
+    			if (this.types[i].STRING != t.types[i].STRING) {
+    				return false;
+    			}
+    		}
+    		return true;
+    	
+    	}
+    
+    	
     	return false;
     }
     
@@ -101,7 +141,12 @@ public class TupleDesc {
      * @return String describing this descriptor.
      */
     public String toString() {
-        //your code here
-    	return "";
+        StringBuffer sb = new  StringBuffer();
+        for (int i = 0; i < numFields(); ++i) {
+        	sb.append(getType(i).toString() + "(" + getFieldName(i).toString() + "),"); 
+        	
+        }
+        sb.deleteCharAt(sb.length()-1);
+    	return sb.toString();
     }
 }
