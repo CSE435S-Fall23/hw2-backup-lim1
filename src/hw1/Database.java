@@ -1,7 +1,11 @@
 package hw1;
 
 import java.io.*;
-
+/*
+ * Chae Hun Lim (441471)
+ * Student 2 name:
+ * Date: Oct 16 2023
+ */
 /** Database is a class that initializes a static
     variable used by the database system (the catalog)
     

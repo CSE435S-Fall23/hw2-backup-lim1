@@ -6,7 +6,7 @@ import java.util.Map;
 /*
  * Chae Hun Lim (441471)
  * Student 2 name:
- * Date: Sep 22 2023
+ * Date: Oct 16 2023
  */
 /**
  * This class represents a tuple that will contain a single row's worth of information

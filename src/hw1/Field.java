@@ -1,7 +1,11 @@
 package hw1;
 
 import java.io.*;
-
+/*
+ * Chae Hun Lim (441471)
+ * Student 2 name:
+ * Date: Oct 16 2023
+ */
 /**
  * Interface for values of fields in tuples in SimpleDB.
  */

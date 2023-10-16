@@ -2,7 +2,11 @@ package hw1;
 
 import java.io.*;
 import java.nio.ByteBuffer;
-
+/*
+ * Chae Hun Lim (441471)
+ * Student 2 name:
+ * Date: Oct 16 2023
+ */
 /**
  * Instance of Field that stores a single integer.
  */

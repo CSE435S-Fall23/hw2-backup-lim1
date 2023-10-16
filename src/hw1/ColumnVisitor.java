@@ -3,7 +3,11 @@ package hw1;
 import net.sf.jsqlparser.statement.select.AllColumns;
 import net.sf.jsqlparser.statement.select.SelectExpressionItem;
 import net.sf.jsqlparser.statement.select.SelectItemVisitorAdapter;
-
+/*
+ * Chae Hun Lim (441471)
+ * Student 2 name:
+ * Date: Oct 16 2023
+ */
 /**
  * Processes SELECT clauses using the visitor pattern
  * @author Doug Shook

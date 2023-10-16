@@ -8,7 +8,11 @@ import net.sf.jsqlparser.expression.ExpressionVisitorAdapter;
 import net.sf.jsqlparser.expression.Function;
 import net.sf.jsqlparser.schema.Column;
 import net.sf.jsqlparser.statement.select.AllColumns;
-
+/*
+ * Chae Hun Lim (441471)
+ * Student 2 name:
+ * Date: Oct 16 2023
+ */
 /**
  * Processes aggregate functions using the visitor pattern
  * @author Doug Shook

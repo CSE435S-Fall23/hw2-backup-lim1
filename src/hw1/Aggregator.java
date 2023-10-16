@@ -3,7 +3,11 @@ package hw1;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map.Entry;
-
+/*
+ * Chae Hun Lim (441471)
+ * Student 2 name:
+ * Date: Oct 16 2023
+ */
 
 /**
  * A class to perform various aggregations, by accepting one tuple at a time

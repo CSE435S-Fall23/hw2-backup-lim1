@@ -9,7 +9,7 @@ import java.util.Map.Entry;
 /*
  * Chae Hun Lim (441471)
  * Student 2 name:
- * Date: Sep 22 2023
+ * Date: Oct 16 2023
  */
 /**
  * The Catalog keeps track of all available tables in the database and their
